@@ -18,10 +18,15 @@ document.addEventListener('keydown', (ev) => {
         }
     }
     if (ev.key === 'Backspace') {
+        if (!active) {
+            if (after.lastChild) {
+                after.removeChild(after.lastChild);
+            } else {
+                active = true;
+            }
+        }
         if (active) {
             if (before.lastChild) before.removeChild(before.lastChild);
-        } else {
-            if (after.lastChild) after.removeChild(after.lastChild);
         }
     }
     draw();
